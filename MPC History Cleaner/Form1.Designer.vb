@@ -26,6 +26,7 @@ Partial Class Form1
         ListBox1 = New ListBox()
         SelectedLBL = New Label()
         HistoryCountLBL = New Label()
+        LinkLabel1 = New LinkLabel()
         SuspendLayout()
         ' 
         ' ClearBtn
@@ -70,11 +71,23 @@ Partial Class Form1
         HistoryCountLBL.TabIndex = 6
         HistoryCountLBL.Text = "All :"
         ' 
+        ' LinkLabel1
+        ' 
+        LinkLabel1.AutoSize = True
+        LinkLabel1.Cursor = Cursors.Hand
+        LinkLabel1.Location = New Point(12, 2)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(45, 15)
+        LinkLabel1.TabIndex = 8
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "GitHub"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(471, 361)
+        Controls.Add(LinkLabel1)
         Controls.Add(HistoryCountLBL)
         Controls.Add(SelectedLBL)
         Controls.Add(ListBox1)
@@ -90,5 +103,6 @@ Partial Class Form1
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents SelectedLBL As Label
     Friend WithEvents HistoryCountLBL As Label
+    Friend WithEvents LinkLabel1 As LinkLabel
 
 End Class

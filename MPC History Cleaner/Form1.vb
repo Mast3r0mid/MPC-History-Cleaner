@@ -8,7 +8,12 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim registry = My.Computer.Registry
+
         Dim mainkey = registry.CurrentUser.OpenSubKey("Software\MPC-HC\MPC-HC\MediaHistory")
+        If mainkey Is Nothing Then
+            MsgBox("No History...!!!")
+            Exit Sub
+        End If
         For Each keyname As String In mainkey.GetSubKeyNames
             Dim History = mainkey.OpenSubKey(keyname).GetValue("Filename")
             Dim lastopen = mainkey.OpenSubKey(keyname).GetValue("LastOpened")
@@ -50,5 +55,9 @@ Public Class Form1
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
         SelectedLBL.Text = $"Selected items: {ListBox1.SelectedItems.Count}"
         HistoryCountLBL.Text = $"All :{ListBox1.Items.Count}"
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("explorer.exe", "https://github.com/mast3r0mid")
     End Sub
 End Class
